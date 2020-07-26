@@ -1,4 +1,4 @@
-## GraphQL started with postgres as the repository
+## GraphQL starter with postgres as the repository
 
 ### generate code after any schema change
 
