@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}",
+            "env": {
+                "inventoryDBConnectionString":"postgres://kammfkje:YcNz8fBvgBdXIjkIWqX356qJhJ99jICP@satao.db.elephantsql.com:5432/kammfkje"
+            },
+            "args": []
+        }
+    ]
+}
