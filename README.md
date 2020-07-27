@@ -4,7 +4,11 @@
 
 `gqlgen generate`
 
-then delete the resolver.schema.go file coz its compaints redeclared
+OR for using `go generate`, add this line in resolver.go `//go:generate go run github.com/99designs/gqlgen` and then generate recursively
+
+`go generate ./...`
+
+then implement the method that talk to repository and call that from schema.resolvers.go
 
 ### learnings
 

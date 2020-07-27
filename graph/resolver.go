@@ -1,10 +1,11 @@
 package graph
 
+//go:generate go run github.com/99designs/gqlgen
+
 import (
 	"context"
 
 	"github.com/unrealnerd/gql-postgres/graph/model"
-	"github.com/unrealnerd/gql-postgres/graph/generated"
 	"github.com/unrealnerd/gql-postgres/repo"
 )
 
@@ -17,14 +18,16 @@ type Resolver struct {
 	Products []*model.Product
 }
 
-// Query returns generated.QueryResolver implementation.
-func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
-
-type queryResolver struct{ *Resolver }
-
-func (r *queryResolver) Products(ctx context.Context) ([]*model.Product, error) {
+func (r *queryResolver) getProductsFromInventory(ctx context.Context, first *int, after *int) ([]*model.Product, error) {
 	repo := &repo.InventoryRepo{}
-	quotes := repo.Find("1 = $1", 1)// dummy query
 
-	return quotes, nil
+	if after == nil {
+		after = new(int)
+	}
+
+	if first == nil {
+		first = new(int)
+	}
+
+	return repo.GetProducts(*first, *after)
 }
