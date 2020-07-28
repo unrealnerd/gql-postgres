@@ -17,6 +17,8 @@ then implement the method that talk to repository and call that from schema.reso
 - graphql with generation using gql go
 - how to validate jwt validation and get the json web keys for certifcate
 - logging middleware
+- handling optional graphql arguments
+- error handling
 
 
 ### vscode settings
